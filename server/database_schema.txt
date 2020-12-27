@@ -1,0 +1,47 @@
+CREATE TABLE "AuthToken" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"authorizationtoken"	TEXT NOT NULL UNIQUE,
+	"user"	TEXT NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
+
+CREATE TABLE "Event" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"eventid"	TEXT NOT NULL UNIQUE,
+	"associateduser"	TEXT NOT NULL,
+	"personid"	TEXT NOT NULL,
+	"latitude"	NUMERIC,
+	"longitude"	NUMERIC,
+	"country"	TEXT,
+	"city"	TEXT,
+	"eventtype"	TEXT,
+	"year"	INTEGER,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
+
+CREATE TABLE "Person" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"personid"	TEXT NOT NULL UNIQUE,
+	"associateduser"	TEXT NOT NULL,
+	"firstname"	TEXT NOT NULL,
+	"lastname"	TEXT NOT NULL,
+	"gender"	TEXT,
+	"father"	TEXT,
+	"mother"	TEXT,
+	"spouse"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
+
+CREATE TABLE "User" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"username"	TEXT NOT NULL UNIQUE,
+	"password"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	"firstname"	TEXT NOT NULL,
+	"lastname"	TEXT NOT NULL,
+	"gender"	TEXT,
+	"personid"	TEXT NOT NULL UNIQUE,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
+
+CREATE TABLE sqlite_sequence(name,seq)
